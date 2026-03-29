@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Holy Week — Walking with Jesus</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f5efe0;
+    --parchment-dark: #ede4cc;
+    --parchment-deep: #d9ccb0;
+    --olive: #5a6640;
+    --olive-light: #7a8a55;
+    --olive-dark: #3d4a28;
+    --terracotta: #b85c38;
+    --terracotta-light: #d4784f;
+    --terracotta-deep: #8a3e22;
+    --ink: #2a2015;
+    --ink-light: #4a3825;
+    --warm-gray: #8c7d6a;
+    --cream: #faf6ed;
+    --gold: #c9a84c;
+    --gold-light: #e0c070;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(42, 32, 21, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav-back {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(250, 246, 237, 0.45);
+    text-decoration: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .nav-back:hover {
+    color: var(--gold-light);
+    background: rgba(201, 168, 76, 0.1);
+  }
+
+  .nav-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+  }
+
+  .nav-days {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+  }
+
+  .nav-day {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(250, 246, 237, 0.55);
+    text-decoration: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .nav-day:hover {
+    color: var(--gold-light);
+    background: rgba(201, 168, 76, 0.1);
+  }
+
+  /* ── COVER SLIDE ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    background: var(--ink);
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(90, 102, 64, 0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(184, 92, 56, 0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 80% 20%, rgba(201, 168, 76, 0.1) 0%, transparent 60%);
+  }
+
+  .cover-texture {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+
+  .cover-content { position: relative; z-index: 1; max-width: 700px; }
+
+  .cover-eyebrow {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    opacity: 0.8;
+  }
+
+  .cover-cross {
+    font-size: 2.5rem;
+    color: var(--gold);
+    opacity: 0.7;
+    margin-bottom: 2rem;
+    display: block;
+    animation: breathe 4s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.05); }
+  }
+
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .cover h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .cover-subtitle {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: rgba(250, 246, 237, 0.65);
+    font-style: italic;
+    margin-bottom: 3rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cover-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 3rem;
+  }
+
+  .cover-dates {
+    display: flex;
+    gap: 0.5rem 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cover-date {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(250, 246, 237, 0.4);
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(250, 246, 237, 0.3);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: float 2s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  .scroll-cue::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, rgba(201, 168, 76, 0.4));
+  }
+
+  /* ── DAY HEADER SLIDE ── */
+  .day-header {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .day-header.palm-sunday { background: var(--olive-dark); }
+  .day-header.monday { background: #3a2a18; }
+  .day-header.tuesday { background: #2a3030; }
+  .day-header.wednesday { background: #1e1e2a; }
+  .day-header.thursday { background: #2a1a0a; }
+  .day-header.friday { background: #1a0a0a; }
+  .day-header.saturday { background: #121218; }
+  .day-header.easter { background: #1a2a10; }
+
+  .day-header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.5) 100%);
+  }
+
+  .day-num {
+    position: absolute;
+    top: 4rem;
+    right: 4rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(6rem, 15vw, 12rem);
+    font-weight: 300;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+
+  .day-header-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+
+  .day-label {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    opacity: 0.85;
+  }
+
+  .day-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .day-subtitle {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(250, 246, 237, 0.55);
+    margin-bottom: 1.5rem;
+  }
+
+  .day-refs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .ref-tag {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: rgba(201, 168, 76, 0.8);
+    border: 1px solid rgba(201, 168, 76, 0.25);
+    padding: 0.2rem 0.75rem;
+    border-radius: 20px;
+  }
+
+  /* ── SECTION SLIDES ── */
+  .section {
+    padding: 5rem 4rem;
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-alt {
+    background: var(--parchment-dark);
+  }
+
+  .section-dark {
+    background: var(--ink);
+    max-width: 100%;
+    padding: 5rem calc(50% - 420px);
+  }
+
+  .section-tag {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-tag::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--parchment-deep);
+    max-width: 60px;
+  }
+
+  .section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-dark h2 {
+    color: var(--cream);
+  }
+
+  .section p {
+    color: var(--ink-light);
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+  }
+
+  .section-dark p {
+    color: rgba(250, 246, 237, 0.75);
+  }
+
+  strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .section-dark strong {
+    color: var(--cream);
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    margin: 2.5rem 0;
+    padding: 2rem 2.5rem;
+    border-left: 3px solid var(--terracotta);
+    background: rgba(184, 92, 56, 0.06);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .pull-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+
+  .pull-quote cite {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-style: normal;
+  }
+
+  .section-dark .pull-quote {
+    background: rgba(184, 92, 56, 0.15);
+    border-left-color: var(--terracotta-light);
+  }
+
+  .section-dark .pull-quote p {
+    color: var(--cream);
+  }
+
+  /* ── SCRIPTURE BLOCK ── */
+  .scripture {
+    margin: 2rem 0;
+    padding: 2rem 2.5rem;
+    background: var(--cream);
+    border: 1px solid var(--parchment-deep);
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .scripture::before {
+    content: '\201C';
+    position: absolute;
+    top: -0.5rem;
+    left: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    color: var(--olive-light);
+    opacity: 0.3;
+    line-height: 1;
+  }
+
+  .scripture p {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+  }
+
+  .scripture cite {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--olive);
+    font-style: normal;
+    display: block;
+    margin-top: 0.75rem;
+  }
+
+  /* ── WORD STUDY ── */
+  .word-study {
+    margin: 2rem 0;
+    padding: 1.5rem 2rem;
+    background: rgba(90, 102, 64, 0.08);
+    border: 1px solid rgba(90, 102, 64, 0.2);
+    border-radius: 4px;
+  }
+
+  .word-study .greek {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--olive-dark);
+    font-style: italic;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .word-study .transliteration {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--olive);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .word-study p {
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    margin: 0;
+  }
+
+  /* ── PROPHECY TABLE ── */
+  .prophecy-grid {
+    display: grid;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .prophecy-item {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.25rem;
+    background: var(--cream);
+    border: 1px solid var(--parchment-deep);
+    border-radius: 4px;
+  }
+
+  .prophecy-item .ot {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.85rem;
+    color: var(--warm-gray);
+  }
+
+  .prophecy-item .ot strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--olive-dark);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .prophecy-item .arrow {
+    color: var(--gold);
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .prophecy-item .fulfil {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.85rem;
+    color: var(--warm-gray);
+  }
+
+  .prophecy-item .fulfil strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--terracotta-deep);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  /* ── COMMENTARY CARD ── */
+  .commentary {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: var(--parchment-dark);
+    border-radius: 4px;
+    border-top: 3px solid var(--olive-light);
+  }
+
+  .commentary-author {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--olive);
+    margin-bottom: 0.75rem;
+  }
+
+  .commentary p {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--ink-light);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .commentary .book {
+    font-size: 0.8rem;
+    color: var(--warm-gray);
+    font-style: normal;
+    margin-top: 0.75rem;
+    display: block;
+  }
+
+  /* ── REFLECTION SLIDE ── */
+  .reflection {
+    background: var(--olive-dark);
+    padding: 5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reflection::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 70% at 80% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 70%);
+  }
+
+  .reflection-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .reflection .section-tag {
+    color: var(--gold-light);
+  }
+
+  .reflection .section-tag::after {
+    background: rgba(201, 168, 76, 0.2);
+  }
+
+  .reflection h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+  }
+
+  .reflection p {
+    color: rgba(250, 246, 237, 0.8);
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+  }
+
+  .reflection-question {
+    margin: 2rem 0;
+    padding: 1.5rem 2rem;
+    background: rgba(250, 246, 237, 0.08);
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 4px;
+  }
+
+  .reflection-question p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--gold-light);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .deeper-reading {
+    margin-top: 2rem;
+  }
+
+  .deeper-reading h4 {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(201, 168, 76, 0.6);
+    margin-bottom: 0.75rem;
+  }
+
+  .reading-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .reading-tag {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.85rem;
+    color: rgba(250, 246, 237, 0.6);
+    border: 1px solid rgba(250, 246, 237, 0.15);
+    padding: 0.3rem 0.85rem;
+    border-radius: 20px;
+  }
+
+  /* ── SEPARATOR ── */
+  .day-sep {
+    height: 3px;
+    background: linear-gradient(to right, var(--terracotta-deep), var(--gold), var(--olive));
+    opacity: 0.4;
+  }
+
+  /* ── SPECIAL: PASSOVER TABLE ── */
+  .passover-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.9rem;
+  }
+
+  .passover-table th {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 2px solid var(--parchment-deep);
+  }
+
+  .passover-table td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--parchment-deep);
+    color: var(--ink-light);
+    line-height: 1.5;
+    vertical-align: top;
+  }
+
+  .passover-table tr:last-child td { border-bottom: none; }
+
+  .passover-table td:first-child {
+    font-style: italic;
+    color: var(--olive-dark);
+  }
+
+  /* ── SEVEN WORDS TABLE ── */
+  .words-table {
+    display: grid;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .word-item {
+    padding: 1.25rem 1.5rem;
+    background: rgba(26, 10, 10, 0.5);
+    border-left: 3px solid var(--terracotta);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .word-item .word-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--cream);
+    margin-bottom: 0.35rem;
+  }
+
+  .word-item .word-ref {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+
+  .word-item .word-note {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.9rem;
+    color: rgba(250, 246, 237, 0.55);
+  }
+
+  /* ── SACRIFICE WEEK TABLE ── */
+  .sacrifice-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--parchment-deep);
+    border: 1px solid var(--parchment-deep);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 2rem 0;
+  }
+
+  .sacrifice-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 1fr;
+    background: var(--cream);
+    gap: 1px;
+  }
+
+  .sacrifice-row.header {
+    background: var(--ink);
+  }
+
+  .sacrifice-row.header span {
+    color: rgba(250, 246, 237, 0.5) !important;
+    font-size: 0.65rem !important;
+  }
+
+  .sacrifice-row span {
+    padding: 0.85rem 1rem;
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.9rem;
+    color: var(--ink-light);
+  }
+
+  .sacrifice-row span:first-child {
+    font-weight: 600;
+    color: var(--terracotta-deep);
+    background: rgba(184, 92, 56, 0.05);
+  }
+
+  /* ── RESOURCES ── */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .resource-card {
+    padding: 1.5rem;
+    background: var(--cream);
+    border: 1px solid var(--parchment-deep);
+    border-radius: 4px;
+    border-top: 3px solid var(--olive-light);
+  }
+
+  .resource-card .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+
+  .resource-card .author {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--olive);
+    margin-bottom: 0.75rem;
+  }
+
+  .resource-card p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.9rem;
+    color: var(--warm-gray);
+    line-height: 1.5;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    background: var(--ink);
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(90, 102, 64, 0.2) 0%, transparent 70%);
+  }
+
+  .closing-content { position: relative; z-index: 1; max-width: 600px; }
+
+  .closing h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+  }
+
+  .closing p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: rgba(250, 246, 237, 0.6);
+    margin-bottom: 1rem;
+  }
+
+  .closing .gold-line {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { overflow-x: auto; }
+    .nav-days { gap: 0; }
+    .nav-day { padding: 0.3rem 0.4rem; font-size: 0.6rem; }
+    .day-header { padding: 6rem 2rem 3rem; }
+    .section { padding: 3rem 1.5rem; }
+    .reflection { padding: 3rem 1.5rem; }
+    .sacrifice-row { grid-template-columns: 100px 1fr; }
+    .sacrifice-row span:last-child { display: none; }
+    .section-dark { padding: 3rem 1.5rem; }
+    .prophecy-item { grid-template-columns: 1fr; }
+    .prophecy-item .arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a class="nav-back" href="../">← All Studies</a>
+  <div class="nav-days">
+    <a class="nav-day" href="#palm-sunday">Palm Sun</a>
+    <a class="nav-day" href="#monday">Monday</a>
+    <a class="nav-day" href="#tuesday">Tuesday</a>
+    <a class="nav-day" href="#wednesday">Wednesday</a>
+    <a class="nav-day" href="#thursday">Thursday</a>
+    <a class="nav-day" href="#friday">Friday</a>
+    <a class="nav-day" href="#saturday">Saturday</a>
+    <a class="nav-day" href="#easter">Easter</a>
+  </div>
+</nav>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-texture"></div>
+  <div class="cover-content">
+    <p class="cover-eyebrow">A Holy Week Study</p>
+    <span class="cover-cross">✦</span>
+    <h1>Walking with<br><em>Jesus</em></h1>
+    <p class="cover-subtitle">From the cheering crowds of Jerusalem to the empty tomb — the week that changed everything.</p>
+    <div class="cover-divider"></div>
+    <div class="cover-dates">
+      <span class="cover-date">Palm Sunday</span>
+      <span class="cover-date">·</span>
+      <span class="cover-date">Good Friday</span>
+      <span class="cover-date">·</span>
+      <span class="cover-date">Easter Sunday</span>
+    </div>
+  </div>
+  <div class="scroll-cue">Begin</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     PALM SUNDAY
+════════════════════════════════════════ -->
+<div id="palm-sunday" class="day-sep"></div>
+
+<div class="day-header palm-sunday">
+  <div class="day-num">I</div>
+  <div class="day-header-content">
+    <p class="day-label">Day One — Palm Sunday</p>
+    <h2 class="day-title">The King Rides In</h2>
+    <p class="day-subtitle">"Hosanna! Blessed is he who comes in the name of the Lord."</p>
+    <div class="day-refs">
+      <span class="ref-tag">Matthew 21:1–11</span>
+      <span class="ref-tag">Mark 11:1–11</span>
+      <span class="ref-tag">Luke 19:28–44</span>
+      <span class="ref-tag">John 12:12–19</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <p class="section-tag">What Happened</p>
+  <h2>Two Processions Enter Jerusalem</h2>
+  <p>Jerusalem at Passover was a city on edge. Its normal population of around 50,000 swelled to somewhere between 200,000 and 500,000 pilgrims flooding in from across the Jewish diaspora. And every year, the Roman governor — Pontius Pilate — would ride into the city from the west, from his coastal residence in Caesarea Maritima. Military escort, cavalry, the full display of imperial power. A message the crowd couldn't miss: Rome is watching. Stay in line.</p>
+  <p>That same morning, Jesus entered from the east. From the Mount of Olives. On a donkey.</p>
+  <p>This wasn't an accident. It was a statement — and every person watching would have known exactly what it meant.</p>
+  <div class="commentary">
+    <div class="commentary-author">N.T. Wright — New Testament Scholar</div>
+    <p>"Jesus was staging a counter-imperial procession. Where Pilate came with the symbols of military might, Jesus came with the symbols of peace — a deliberate, prophetic act that subverted the very nature of kingship."</p>
+    <span class="book">Jesus and the Victory of God</span>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <p class="section-tag">Historical Context</p>
+  <h2>What "Hosanna" Actually Meant</h2>
+  <p>The crowd spread their cloaks on the road — this was a coronation gesture. When Jehu was declared king in 2 Kings 9:13, the people spread their garments before him. The crowd knew the language of kingship. They were crowning someone.</p>
+  <p>They waved palm branches — a symbol of Jewish national identity and victory, last used publicly during the Maccabean revolt when Israel briefly won its independence from foreign rulers. Pulling out palm branches was the first-century equivalent of waving a national flag.</p>
+  <p>And the word they shouted — "Hosanna" — is worth sitting with. It comes from the Hebrew <em>hoshia na</em>, which literally means "Save us now!" It's a cry from Psalm 118:25-26. Not a cheerful cheer. A desperate plea. These people weren't just celebrating; they were begging.</p>
+  <div class="word-study">
+    <span class="greek">הוֹשִׁיעָה נָּא</span>
+    <span class="transliteration">Hoshia Na — Psalm 118:25</span>
+    <p><strong>"Save us, we beg you!"</strong> — The crowd wasn't simply applauding. They were crying out to the one they hoped would deliver them from Roman occupation. The tragedy is that Jesus was delivering them from something far worse, and far more personal, than Rome.</p>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-tag">Fulfilled Prophecy</p>
+  <h2>The King on a Donkey — Zechariah 9:9</h2>
+  <p>Written around 520 BC — five centuries before the event — the prophet Zechariah described this scene in detail.</p>
+  <div class="scripture">
+    <p>"Rejoice greatly, Daughter Zion! Shout, Daughter Jerusalem! See, your king comes to you, righteous and victorious, lowly and riding on a donkey, on a colt, the foal of a donkey."</p>
+    <cite>Zechariah 9:9</cite>
+  </div>
+  <p>In the ancient Near East, a king who rode a horse was coming for war. A king who rode a donkey was coming in peace. Jesus's choice of animal was not humility for its own sake — it was a deliberate signal about what kind of king he was and what kind of victory he was bringing. Not military conquest. Something else entirely.</p>
+  <div class="prophecy-grid">
+    <div class="prophecy-item">
+      <div class="ot"><strong>Zechariah 9:9</strong>Written ~520 BC<br>"Riding on a donkey"</div>
+      <div class="arrow">→</div>
+      <div class="fulfil"><strong>Matthew 21:7</strong>Palm Sunday<br>"They brought the donkey and the colt"</div>
+    </div>
+    <div class="prophecy-item">
+      <div class="ot"><strong>Psalm 118:25-26</strong>David's Psalm<br>"Blessed is he who comes in the name of the Lord"</div>
+      <div class="arrow">→</div>
+      <div class="fulfil"><strong>Matthew 21:9</strong>The crowd's cry<br>"Hosanna! Blessed is he who comes..."</div>
+    </div>
+    <div class="prophecy-item">
+      <div class="ot"><strong>2 Kings 9:13</strong>Coronation custom<br>Spreading garments = crowning a king</div>
+      <div class="arrow">→</div>
+      <div class="fulfil"><strong>Matthew 21:8</strong>The crowd<br>"Spread their cloaks on the road"</div>
+    </div>
+  </div>
+</section>
+
+<div class="reflection" id="ps-reflect">
+  <div class="reflection-content">
+    <p class="section-tag">Reflection</p>
+    <h2>He Wept Before He Was Worshipped</h2>
+    <p>Luke records something the other Gospel writers leave out. As Jesus crested the Mount of Olives and the city came into view — with the crowd cheering below — he stopped and wept.</p>
+    <div class="scripture" style="background: rgba(250,246,237,0.08); border-color: rgba(250,246,237,0.15);">
+      <p style="color: var(--cream);">"As he approached Jerusalem and saw the city, he wept over it and said, 'If you, even you, had only known on this day what would bring you peace — but now it is hidden from your eyes.'"</p>
+      <cite style="color: var(--gold);">Luke 19:41-42</cite>
+    </div>
+    <p>The Greek word Luke uses is <em>eklausen</em> — not silent tears. Audible, heaving grief. Jesus was weeping because he could see exactly what was coming: the destruction of the city in 70 AD, the slaughter of its people, the dismantling of everything they held sacred. The people cheering him had no idea that the one they were crowning was about to lay down his life for them — and that most of them would still reject him anyway.</p>
+    <p>He chose to enter anyway.</p>
+    <div class="reflection-question">
+      <p>What kind of king are you asking Jesus to be? Where might your picture of him be getting in the way of who he actually is?</p>
+    </div>
+    <div class="deeper-reading">
+      <h4>For Deeper Reading</h4>
+      <div class="reading-tags">
+        <span class="reading-tag">Zechariah 9:9-17</span>
+        <span class="reading-tag">Psalm 118:19-29</span>
+        <span class="reading-tag">Luke 19:28-44</span>
+        <span class="reading-tag">John 12:12-19</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     MONDAY
+════════════════════════════════════════ -->
+<div id="monday" class="day-sep"></div>
+
+<div class="day-header monday">
+  <div class="day-num">II</div>
+  <div class="day-header-content">
+    <p class="day-label">Day Two — Monday</p>
+    <h2 class="day-title">Tables Overturned</h2>
+    <p class="day-subtitle">"My house will be called a house of prayer for all nations."</p>
+    <div class="day-refs">
+      <span class="ref-tag">Matthew 21:12–17</span>
+      <span class="ref-tag">Mark 11:12–19</span>
+      <span class="ref-tag">Luke 19:45–48</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <p class="section-tag">What Happened</p>
+  <h2>The Temple Had Become a Marketplace</h2>
+  <p>Herod the Great had spent decades turning the Temple Mount into one of the most impressive structures in the ancient world. The platform alone covered thirty-six acres. The outer area — the Court of the Gentiles — was the only part of the complex where non-Jews could enter and pray, the one space designated for those from the nations who wanted to seek God.</p>
+  <p>By the time Jesus arrived, that space had been turned into a trading floor.</p>
+  <p>Money changers sat at rows of tables because the Temple tax had to be paid in Tyrian shekels — coins that didn't carry the Roman Emperor's image. Pilgrims arriving from across the diaspora needed to exchange their currencies. Animal vendors sold approved sacrificial animals, often at prices four to five times what you'd pay outside. The noise, the smell of livestock, the haggling. The one place where the nations were invited to meet God had become inaccessible, crowded, and corrupt.</p>
+  <div class="commentary">
+    <div class="commentary-author">Joachim Jeremias — Biblical Historian</div>
+    <p>"The priestly aristocracy — particularly the House of Annas — controlled significant commercial interests in the Temple precincts and profited considerably from the trade. This was institutionalised religious corruption, sanctioned from the top."</p>
+    <span class="book">Jerusalem in the Time of Jesus</span>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <p class="section-tag">Historical Context</p>
+  <h2>This Was Not an Impulse — It Was a Decision</h2>
+  <p>Mark's account gives us a detail the others don't. On Palm Sunday evening, Jesus went to the Temple and "looked around at everything" (Mark 11:11) — and then left, because it was already late. He went back to Bethany.</p>
+  <p>He came back Monday morning with intent.</p>
+  <p>He drove out those who were buying and selling. He overturned the tables. He wouldn't allow anyone to carry merchandise through the Temple courts. Then he quoted two prophets in the same breath:</p>
+  <div class="scripture">
+    <p>"It is written, 'My house will be called a house of prayer for all nations.' But you have made it 'a den of robbers.'"</p>
+    <cite>Mark 11:17 — combining Isaiah 56:7 and Jeremiah 7:11</cite>
+  </div>
+  <p>The first half is from Isaiah — a beautiful vision of the Temple as a place where foreigners and outsiders would come and be welcomed by God. The second half is from Jeremiah — the prophet who stood in the very gates of the Temple and warned that religious performance without justice would bring the whole thing down. Jesus was putting those two texts together deliberately. This is what you were supposed to be. This is what you've become.</p>
+</section>
+
+<section class="section">
+  <p class="section-tag">Fulfilled Prophecy</p>
+  <h2>The Lord Coming Suddenly to His Temple — Malachi 3:1-3</h2>
+  <div class="prophecy-grid">
+    <div class="prophecy-item">
+      <div class="ot"><strong>Malachi 3:1</strong>Written ~430 BC<br>"The Lord you are seeking will come suddenly to his temple"</div>
+      <div class="arrow">→</div>
+      <div class="fulfil"><strong>Mark 11:15-16</strong>Monday of Holy Week<br>Jesus enters and drives out the traders</div>
+    </div>
+    <div class="prophecy-item">
+      <div class="ot"><strong>Malachi 3:3</strong>430 BC<br>"He will purify the Levites and refine them like gold"</div>
+      <div class="arrow">→</div>
+      <div class="fulfil"><strong>Matthew 21:14</strong>Immediately after<br>Jesus heals the blind and lame in the Temple</div>
+    </div>
+    <div class="prophecy-item">
+      <div class="ot"><strong>Isaiah 56:7</strong>~700 BC<br>"My house will be called a house of prayer for all nations"</div>
+      <div class="arrow">→</div>
+      <div class="fulfil"><strong>Mark 11:17</strong>Jesus quotes it directly<br>as the standard the Temple was failing</div>
+    </div>
+  </div>
+  <div class="commentary">
+    <div class="commentary-author">D.A. Carson — New Testament Scholar</div>
+    <p>"The cleansing is a prophetic act of judgment on the corruption that had crept into Israel's worship — not a fit of temper, but the measured response of the one who had the authority to judge Israel's house. Mark's detail about Sunday evening removes any doubt: this was premeditated."</p>
+    <span class="book">The Gospel of John, Pillar New Testament Commentary</span>
+  </div>
+</section>
+
+<div class="reflection">
+  <div class="reflection-content">
+    <p class="section-tag">Reflection</p>
+    <h2>What Happens After the Tables Are Overturned</h2>
+    <p>Matthew gives us one of the most quietly striking details of Holy Week. The moment Jesus clears the Temple — the moment the noise and commerce stop — the blind and the lame come to him. And he heals them.</p>
+    <p>Where religious performance had pushed out the vulnerable, Jesus makes space for them. The children start singing "Hosanna to the Son of David." The chief priests are furious.</p>
+    <p>This is what Jesus does when something is cleared out. He doesn't leave a vacuum. He fills the space with something entirely different.</p>
+    <div class="reflection-question">
+      <p>What might Jesus want to clear out of your inner life — not as punishment, but to make room for something better? What has slowly crept in that no longer belongs there?</p>
+    </div>
+    <div class="deeper-reading">
+      <h4>For Deeper Reading</h4>
+      <div class="reading-tags">
+        <span class="reading-tag">Isaiah 56:6-7</span>
+        <span class="reading-tag">Malachi 3:1-4</span>
+        <span class="reading-tag">Jeremiah 7:1-15</span>
+        <span class="reading-tag">1 Corinthians 6:19-20</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     TUESDAY
+════════════════════════════════════════ -->
+<div id="tuesday" class="day-sep"></div>
+
+<div class="day-header tuesday">
+  <div class="day-num">III</div>
+  <div class="day-header-content">
+    <p class="day-label">Day Three — Tuesday</p>
+    <h2 class="day-title">The Day of Confrontation</h2>
+    <p class="day-subtitle">"Not one stone here will be left on another."</p>
+    <div class="day-refs">
+      <span class="ref-tag">Matthew 21:23 – 25:46</span>
+      <span class="ref-tag">Mark 11:27 – 13:37</span>
+      <span class="ref-tag">Luke 20–21</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <p class="section-tag">What Happened</p>
+  <h2>The Longest Day in the Gospels</h2>
+  <p>Tuesday covers more chapters in the Gospel narratives than any other single day of Holy Week. Jesus returned to the Temple and taught — and the religious establishment came at him in waves, each group with a different trap designed to publicly discredit him.</p>
+  <p>The Pharisees and Herodians asked about paying taxes to Caesar — a question with no good answer. Say yes, you're a Roman collaborator. Say no, you're a rebel. Jesus asked them for a coin, looked at Caesar's face on it, and said: "Give back to Caesar what is Caesar's, and to God what is God's." The crowd marvelled. They had nothing to say.</p>
+  <p>The Sadducees, who didn't believe in resurrection, tried to make it look ridiculous with a story about a woman who married seven brothers in sequence. Jesus cut through it: "You don't know the Scriptures or the power of God." A teacher of the law, watching, was impressed enough to ask his own question — genuinely, not as a trap. What's the greatest commandment? Love God with everything you have. Love your neighbour as yourself.</p>
+  <div class="commentary">
+    <div class="commentary-author">R.T. France — New Testament Scholar</div>
+    <p>"Tuesday constitutes a frontal assault on Jesus's authority by each of the main power groups in Jerusalem — and in each case Jesus not only escapes the trap but dismantles the questioner's assumptions entirely. By the end, no one dares ask him anything more."</p>
+    <span class="book">The Gospel of Matthew, NICNT</span>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <p class="section-tag">Historical Context</p>
+  <h2>The Olivet Discourse — Words That Shook His Disciples</h2>
+  <p>As Jesus left the Temple that afternoon, his disciples stopped and marvelled at the buildings. The Temple was genuinely extraordinary — massive white limestone blocks, ornate carvings, gold gleaming in the afternoon sun. Herod had spent decades building something that felt permanent and eternal.</p>
+  <p>Jesus said: "Not one stone here will be left on another; every one will be thrown down."</p>
+  <p>His disciples were stunned. They pulled him aside on the Mount of Olives: "When will this happen?" What followed was the Olivet Discourse — his most extended prophetic teaching. He described wars, famines, persecution, a great desecration in the Temple, and a coming judgment that would reshape the world.</p>
+  <p>Forty years later, it happened. The Roman general Titus besieged Jerusalem in 70 AD. The Jewish historian Josephus records that over one million people died. The Temple was set on fire. Roman soldiers dismantled the stones afterwards to retrieve the gold that had melted into the cracks — fulfilling Jesus's words precisely. Not one stone left on another.</p>
+  <div class="pull-quote">
+    <p>"Jesus was not giving his disciples a timetable for the end of the universe. He was telling them what the end of their world would look like — and what to hold onto when it came."</p>
+    <cite>N.T. Wright — Jesus and the Victory of God</cite>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-tag">The Seven Woes — Matthew 23</p>
+  <h2>The Grief Behind the Anger</h2>
+  <p>Also on this day, Jesus delivered the most confrontational passage in his entire ministry. Seven times he said: "Woe to you, teachers of the law and Pharisees, hypocrites!" He described them as whitewashed tombs — beautiful on the outside, full of death within. He accused them of crossing land and sea to make a single convert and then making that convert twice as much a child of hell as themselves.</p>
+  <p>Strong words. But the passage ends with something unexpected — not anger, but grief.</p>
+  <div class="scripture">
+    <p>"Jerusalem, Jerusalem, you who kill the prophets and stone those sent to you, how often I have longed to gather your children together, as a hen gathers her chicks under her wings, and you were not willing."</p>
+    <cite>Matthew 23:37</cite>
+  </div>
+  <p>The woes weren't contempt. They were the words of a shepherd who watched his sheep being led in the wrong direction and couldn't stay quiet. The Pharisees were blocking people from finding God, and Jesus was furious about it — because he loved the people they were blocking.</p>
+</section>
+
+<div class="reflection">
+  <div class="reflection-content">
+    <p class="section-tag">Reflection</p>
+    <h2>When Religion Becomes Performance</h2>
+    <p>Tuesday's challenge is the hardest one to sit with honestly. The Pharisees weren't irreligious people — they were deeply committed to God's law. They fasted twice a week, gave a tenth of everything they owned, knew Scripture by heart. From the outside, they were the most devoted people in the room.</p>
+    <p>And Jesus said their hearts were tombs.</p>
+    <p>The danger isn't being anti-religious. It's being religious for the wrong reasons — to be seen, to feel secure, to maintain a version of yourself that you're comfortable with. Jesus saw through all of it.</p>
+    <div class="reflection-question">
+      <p>Where does your faith life have more to do with appearance or habit than with genuine encounter with God? What would it look like to bring that honestly before him today?</p>
+    </div>
+    <div class="deeper-reading">
+      <h4>For Deeper Reading</h4>
+      <div class="reading-tags">
+        <span class="reading-tag">Matthew 23:37-39</span>
+        <span class="reading-tag">Psalm 51:6</span>
+        <span class="reading-tag">Micah 6:6-8</span>
+        <span class="reading-tag">Matthew 25:31-46</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     WEDNESDAY
+════════════════════════════════════════ -->
+<div id="wednesday" class="day-sep"></div>
+
+<div class="day-header wednesday">
+  <div class="day-num">IV</div>
+  <div class="day-header-content">
+    <p class="day-label">Day Four — Wednesday</p>
+    <h2 class="day-title">The Silent Day</h2>
+    <p class="day-subtitle">"Even my close friend, in whom I trusted, has lifted his heel against me."</p>
+    <div class="day-refs">
+      <span class="ref-tag">Matthew 26:14-16</span>
+      <span class="ref-tag">Psalm 41:9</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <p class="section-tag">What Happened</p>
+  <h2>The Gospels Go Quiet — But Something Is Moving</h2>
+  <p>Wednesday is the one day in Holy Week where the Gospel writers record almost nothing about Jesus. Most scholars believe he rested in Bethany with the people he loved — Mary, Martha, Lazarus, and the disciples. Away from Jerusalem's noise. A day of quiet before the end.</p>
+  <p>But while Jesus was resting, something else was happening.</p>
+  <div class="scripture">
+    <p>"Then one of the Twelve — the one called Judas Iscariot — went to the chief priests and asked, 'What are you willing to give me if I deliver him over to you?' So they counted out for him thirty pieces of silver."</p>
+    <cite>Matthew 26:14-15</cite>
+  </div>
+  <p>Thirty pieces of silver. The exact price set by Moses's law for a slave who had been gored by an ox (Exodus 21:32). The chief priests put a slave's price on the Son of God — and a disciple accepted it.</p>
+</section>
+
+<section class="section section-alt">
+  <p class="section-tag">Historical Context & Fulfilled Prophecy</p>
+  <h2>The Price That Was Named 500 Years Earlier</h2>
+  <p>What makes Wednesday so quietly devastating is that this, too, was not a surprise. Zechariah had named both the price and the prophet's response to it, writing around 520 BC.</p>
+  <div class="scripture">
+    <p>"So they paid me thirty pieces of silver. And the Lord said to me, 'Throw it to the potter' — the handsome price at which they valued me! So I took the thirty pieces of silver and threw them into the house of the Lord to the potter."</p>
+    <cite>Zechariah 11:12-13</cite>
+  </div>
+  <p>This was fulfilled in two stages: Judas received thirty pieces of silver (Matthew 26:15), then threw them back into the Temple in remorse (Matthew 27:5), and the chief priests used the returned money to buy a potter's field (Matthew 27:7). Every detail matches. The prophet's bitter phrase — "the handsome price at which they valued me" — captures the insult of it. A slave's wages for the Messiah.</p>
+  <div class="commentary">
+    <div class="commentary-author">John Stott — Theologian</div>
+    <p>"It's possible Judas was not merely greedy. He may have been trying to force Jesus's hand — to engineer a crisis that would compel Jesus to declare himself as the political Messiah and take action against Rome. If so, it was a catastrophic misreading of everything Jesus had been saying."</p>
+    <span class="book">The Cross of Christ</span>
+  </div>
+  <div class="prophecy-grid">
+    <div class="prophecy-item">
+      <div class="ot"><strong>Zechariah 11:12</strong>~520 BC<br>"Thirty pieces of silver" — the price of a slave</div>
+      <div class="arrow">→</div>
+      <div class="fulfil"><strong>Matthew 26:15</strong>Wednesday of Holy Week<br>The exact sum paid to Judas</div>
+    </div>
+    <div class="prophecy-item">
+      <div class="ot"><strong>Zechariah 11:13</strong>~520 BC<br>"Throw it to the potter in the house of the Lord"</div>
+      <div class="arrow">→</div>
+      <div class="fulfil"><strong>Matthew 27:5-7</strong>Good Friday<br>Judas throws coins into Temple; priests buy potter's field</div>
+    </div>
+    <div class="prophecy-item">
+      <div class="ot"><strong>Psalm 41:9</strong>David's Psalm<br>"Even my close friend has lifted his heel against me"</div>
+      <div class="arrow">→</div>
+      <div class="fulfil"><strong>John 13:18</strong>Jesus quotes this of Judas directly<br>at the Last Supper</div>
+    </div>
+  </div>
+</section>
+
+<div class="reflection">
+  <div class="reflection-content">
+    <p class="section-tag">Reflection</p>
+    <h2>Sitting in the Silence</h2>
+    <p>Wednesday invites you to stop. Not to study, not to produce, not to perform. Just to sit in the silence of a day where the Gospels go quiet.</p>
+    <p>Jesus knew what Judas was doing. He knew what was coming. He rested anyway. He stayed present with the people around him. There's something worth learning in that.</p>
+    <p>We often fill silence with noise because sitting still means we might have to face something. But God speaks in the still small voice. Holy Week needs its Wednesday.</p>
+    <div class="reflection-question">
+      <p>Have you, in your own way, ever made a small compromise with Jesus — chosen comfort, reputation, or convenience over faithfulness to him? Wednesday is a day to bring that honestly before God without shame, and to receive his grace.</p>
+    </div>
+    <div class="deeper-reading">
+      <h4>For Deeper Reading</h4>
+      <div class="reading-tags">
+        <span class="reading-tag">Psalm 41</span>
+        <span class="reading-tag">Zechariah 11:4-17</span>
+        <span class="reading-tag">John 13:18-30</span>
+        <span class="reading-tag">1 Kings 19:11-13</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     THURSDAY
+════════════════════════════════════════ -->
+<div id="thursday" class="day-sep"></div>
+
+<div class="day-header thursday">
+  <div class="day-num">V</div>
+  <div class="day-header-content">
+    <p class="day-label">Day Five — Thursday</p>
+    <h2 class="day-title">The Last Supper &amp; Gethsemane</h2>
+    <p class="day-subtitle">"Not what I will, but what you will."</p>
+    <div class="day-refs">
+      <span class="ref-tag">Matthew 26:17-56</span>
+      <span class="ref-tag">Mark 14:12-52</span>
+      <span class="ref-tag">Luke 22:7-53</span>
+      <span class="ref-tag">John 13-18</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <p class="section-tag">What Happened</p>
+  <h2>The Most Intimate Evening in All of Scripture</h2>
+  <p>Thursday begins with preparation — Jesus sends Peter and John ahead to arrange a room. They find it just as he described: a large upper room, furnished, ready. The disciples gather. They recline around a low table in the Roman fashion. This is the Passover Seder — the ancient Jewish meal commemorating the Exodus from Egypt, when God delivered his people through the blood of a lamb.</p>
+  <p>Jesus knows exactly what he's doing. Every element of Passover pointed toward this night, and he's about to make that explicit.</p>
+  <table class="passover-table">
+    <thead>
+      <tr><th>Passover Element</th><th>What It Meant</th><th>Fulfilled in Jesus</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>The Passover Lamb — spotless, unblemished</td><td>Substitutionary sacrifice; blood protects from judgment</td><td>"Behold, the Lamb of God" (John 1:29)</td></tr>
+      <tr><td>Unleavened bread</td><td>Haste of departure; purity</td><td>"This is my body, broken for you"</td></tr>
+      <tr><td>The Cup of Redemption (third cup)</td><td>God's redemption of Israel from Egypt</td><td>"This cup is the new covenant in my blood" (Luke 22:20)</td></tr>
+      <tr><td>Bitter herbs — remembering slavery</td><td>The bitterness of bondage</td><td>The weight of sin he was about to carry</td></tr>
+      <tr><td>The Hallel — Psalms 115-118</td><td>Sung at the close of Passover — psalms of trust</td><td>They sang this together before going to Gethsemane</td></tr>
+    </tbody>
+  </table>
+  <div class="commentary">
+    <div class="commentary-author">N.T. Wright — New Testament Scholar</div>
+    <p>"Jesus was not simply observing Passover. He was redefining it around himself. He was saying, in effect: I am the new Exodus. My blood is the blood of the new covenant. The liberation you have been remembering all these centuries — it is happening tonight, and I am how it happens."</p>
+    <span class="book">Jesus and the Victory of God</span>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <p class="section-tag">Historical Context</p>
+  <h2>The Foot Washing — What It Actually Meant</h2>
+  <p>Before supper began, Jesus got up, took off his outer garment, wrapped a towel around his waist, poured water into a basin, and began washing his disciples' feet.</p>
+  <p>In the first-century household, foot washing was the job of the lowest-ranked slave — not even Jewish servants would be asked to do it. It was the task assigned to Gentile slaves. The disciples would have been horrified. Peter's reaction — "You shall never wash my feet!" — was not false modesty. It was a genuine sense that this was completely wrong. The rabbi doesn't do this.</p>
+  <p>Jesus's answer to Peter stopped everything:</p>
+  <div class="scripture">
+    <p>"Unless I wash you, you have no part with me."</p>
+    <cite>John 13:8</cite>
+  </div>
+  <p>This is the whole Gospel in one sentence. The issue isn't whether Peter deserves to have his feet washed. The issue is whether Peter will receive what Jesus offers. Stott notes that the foot washing wasn't primarily a lesson in humility — it was a picture of what was about to happen at the cross. Jesus cleansing what we cannot clean ourselves. And we either receive it or we don't.</p>
+</section>
+
+<section class="section">
+  <p class="section-tag">Gethsemane</p>
+  <h2>The Oil Press — Where Olives Are Crushed</h2>
+  <p>After supper they sang the Hallel psalms and walked across the Kidron Valley to a garden on the Mount of Olives. Gethsemane means "oil press" — the place where olives were crushed to release their oil. The image is almost unbearable.</p>
+  <p>Jesus told his disciples: "My soul is overwhelmed with sorrow to the point of death." Then he went further in, fell on the ground, and prayed.</p>
+  <div class="scripture">
+    <p>"Abba, Father, everything is possible for you. Take this cup from me. Yet not what I will, but what you will."</p>
+    <cite>Mark 14:36</cite>
+  </div>
+  <p>Luke, writing as a physician, includes a medical detail: "His sweat was like drops of blood falling to the ground" (Luke 22:44). This is a real, documented condition called hematidrosis — under extreme psychological anguish, capillaries in the sweat glands can rupture, mixing blood with sweat. Jesus was in physiological crisis before a single Roman soldier touched him.</p>
+  <div class="word-study">
+    <span class="greek">Ἀββά</span>
+    <span class="transliteration">Abba — Aramaic for "Father / Dad"</span>
+    <p>This is the intimate word a Jewish child would use for their father. It carries tenderness, closeness, safety. In the worst moment of his life — facing something beyond our comprehension — Jesus didn't lose his grip on who his Father was. He held onto the relationship even as he surrendered his will to it.</p>
+  </div>
+  <div class="commentary">
+    <div class="commentary-author">D.A. Carson — New Testament Scholar</div>
+    <p>"The cup Jesus prays to have removed was not the physical suffering of crucifixion, as terrible as that was. It was the cup of divine wrath — God's holy and settled anger against human sin — that he was about to drink on our behalf. References to this cup appear throughout the prophets: Isaiah 51:17, Jeremiah 25:15, Revelation 14:10. Jesus faced the full weight of God's judgment so we would never have to."</p>
+    <span class="book">Matthew, Expositor's Bible Commentary</span>
+  </div>
+</section>
+
+<div class="reflection">
+  <div class="reflection-content">
+    <p class="section-tag">Reflection</p>
+    <h2>The Night He Prayed Three Times and Chose Us Anyway</h2>
+    <p>Three times he prayed. Three times he returned to find the disciples asleep. Three times he went back and asked the same thing of his Father — and three times he submitted his will to the Father's.</p>
+    <p>This is worth sitting with: Jesus could have left. Right up until the moment Judas arrived with soldiers, he could have walked away. The submission in that garden was not passive — it was the most costly, active choice in human history. He chose to stay.</p>
+    <p>For you. For your wife. For everyone who would ever read that account.</p>
+    <p>Tonight, if you can, read John 13-17 slowly together — the full record of what Jesus said to his disciples in those final hours. Then take communion together and hold the weight of the evening.</p>
+    <div class="reflection-question">
+      <p>What area of your life are you still holding back from God — something you haven't yet prayed "not my will, but yours"? Gethsemane is the invitation to bring that tonight.</p>
+    </div>
+    <div class="deeper-reading">
+      <h4>For Deeper Reading</h4>
+      <div class="reading-tags">
+        <span class="reading-tag">John 13–17</span>
+        <span class="reading-tag">Jeremiah 31:31-34</span>
+        <span class="reading-tag">Isaiah 53</span>
+        <span class="reading-tag">Psalm 22</span>
+        <span class="reading-tag">Hebrews 4:14-16</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     GOOD FRIDAY
+════════════════════════════════════════ -->
+<div id="friday" class="day-sep"></div>
+
+<div class="day-header friday">
+  <div class="day-num">VI</div>
+  <div class="day-header-content">
+    <p class="day-label">Day Six — Good Friday</p>
+    <h2 class="day-title">Tetelestai</h2>
+    <p class="day-subtitle">"It is finished." — One word that changed everything.</p>
+    <div class="day-refs">
+      <span class="ref-tag">Matthew 26:57 – 27:66</span>
+      <span class="ref-tag">Mark 14:53 – 15:47</span>
+      <span class="ref-tag">Luke 22:54 – 23:56</span>
+      <span class="ref-tag">John 18–19</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <p class="section-tag">What Happened</p>
+  <h2>Six Trials — All of Them Wrong</h2>
+  <p>Between midnight and 9am on Friday morning, Jesus was moved through six separate hearings — three Jewish, three Roman — every one of them violating their own legal standards.</p>
+  <p><strong>Jewish Trial 1 — Before Annas.</strong> The former High Priest interrogated Jesus privately, without witnesses or formal charges (John 18:12-24). Jewish law required charges to be brought before a judge, not by a judge.</p>
+  <p><strong>Jewish Trial 2 — Before Caiaphas and the Sanhedrin.</strong> Jewish law explicitly forbade holding capital trials at night. They held one anyway (Mark 14:53-65). The chief priests were looking for testimony to put Jesus to death and couldn't find any that held up — witnesses contradicted each other. Finally Caiaphas asked Jesus directly: "Are you the Messiah?" Jesus said yes. They called it blasphemy.</p>
+  <p><strong>Jewish Trial 3 — A dawn ratification.</strong> A rushed formal meeting at first light to give the proceedings a veneer of legality (Luke 22:66-71).</p>
+  <p><strong>Roman Trial 1 — Pilate.</strong> Pilate questioned him and said plainly: "I find no basis for a charge against this man" (Luke 23:4). He tried to pass the problem on.</p>
+  <p><strong>Roman Trial 2 — Herod Antipas.</strong> Jesus said nothing (Luke 23:6-12). Not a word.</p>
+  <p><strong>Roman Trial 3 — Pilate again.</strong> The crowd pressed. Pilate offered to release a prisoner — Barabbas or Jesus. They chose Barabbas. Pilate washed his hands and handed Jesus over.</p>
+  <div class="commentary">
+    <div class="commentary-author">John Stott — Theologian</div>
+    <p>"The trials of Jesus present the supreme irony of human history: the only truly innocent man who ever lived, the judge of all the earth, being judged by his own creatures — and being found guilty for telling the truth about who he was."</p>
+    <span class="book">The Cross of Christ</span>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <p class="section-tag">Historical Context</p>
+  <h2>What Roman Flogging Actually Did to a Human Body</h2>
+  <p>Before crucifixion, Pilate had Jesus flogged — the Roman practice called verberatio. The instrument used was a flagellum: leather straps with pieces of bone or metal embedded in the tips. The victim was stripped, tied to a post, and beaten across the back, shoulders, and legs. Medical historians note that a severe Roman flogging could lacerate flesh down to the bone, cause blood loss severe enough to produce hypovolemic shock, and expose muscle and rib tissue. Many condemned men died from the flogging before they ever reached the cross.</p>
+  <p>Jesus then carried the crossbeam — the patibulum — through the streets of Jerusalem to the place of execution. Already in physical collapse from a sleepless night, the hematidrosis, and the flogging, he stumbled. Simon of Cyrene was conscripted from the crowd to carry it for him.</p>
+  <p>Crucifixion was Rome's most deliberately cruel form of execution. Reserved for slaves, traitors, and rebels. Roman citizens were legally exempt. It was designed to maximise humiliation — victims were stripped, posted on a main road, left in full public view. Death came by asphyxiation: to breathe, the victim had to push up on their nailed feet. As exhaustion took over, they could no longer push up. They suffocated slowly.</p>
+  <p>It was calculated cruelty. And Jesus chose to go through it.</p>
+</section>
+
+<section class="section">
+  <p class="section-tag">Fulfilled Prophecies — Good Friday</p>
+  <h2>Written Centuries Before It Happened</h2>
+  <div class="prophecy-grid">
+    <div class="prophecy-item">
+      <div class="ot"><strong>Psalm 22:16</strong>Written ~1000 BC<br>"They pierce my hands and my feet"</div>
+      <div class="arrow">→</div>
+      <div class="fulfil"><strong>John 20:27</strong>Fulfilled at crucifixion<br>Thomas touches the nail marks in his hands</div>
+    </div>
+    <div class="prophecy-item">
+      <div class="ot"><strong>Psalm 22:18</strong>~1000 BC<br>"They divide my clothes among them and cast lots for my garment"</div>
+      <div class="arrow">→</div>
+      <div class="fulfil"><strong>John 19:23-24</strong>At Golgotha<br>Soldiers cast lots for his tunic — exactly as described</div>
+    </div>
+    <div class="prophecy-item">
+      <div class="ot"><strong>Psalm 34:20 / Exodus 12:46</strong>The Passover lamb's bones must not be broken</div>
+      <div class="arrow">→</div>
+      <div class="fulfil"><strong>John 19:33</strong>The soldiers skip Jesus<br>"They did not break his legs" — he was already dead</div>
+    </div>
+    <div class="prophecy-item">
+      <div class="ot"><strong>Isaiah 53:12</strong>~700 BC<br>"He was numbered with the transgressors"</div>
+      <div class="arrow">→</div>
+      <div class="fulfil"><strong>Mark 15:27</strong>At Golgotha<br>Crucified between two thieves</div>
+    </div>
+    <div class="prophecy-item">
+      <div class="ot"><strong>Zechariah 12:10</strong>~520 BC<br>"They will look on me, the one they have pierced"</div>
+      <div class="arrow">→</div>
+      <div class="fulfil"><strong>John 19:34</strong>A soldier pierces his side with a spear<br>Blood and water flow out</div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--ink); padding: 5rem 4rem;">
+  <div style="max-width: 860px; margin: 0 auto;">
+    <p class="section-tag" style="color: var(--terracotta-light);">The Seven Last Words</p>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--cream); margin-bottom: 2rem; font-weight: 300;">What He Said from the Cross</h2>
+    <div class="words-table">
+      <div class="word-item">
+        <div class="word-ref">Luke 23:34</div>
+        <div class="word-text">"Father, forgive them, for they do not know what they are doing."</div>
+        <div class="word-note">Interceding for the people killing him. Not after the fact — during it.</div>
+      </div>
+      <div class="word-item">
+        <div class="word-ref">Luke 23:43</div>
+        <div class="word-text">"Today you will be with me in paradise."</div>
+        <div class="word-note">To the thief who believed at the last possible moment. No conditions. No waiting period. Today.</div>
+      </div>
+      <div class="word-item">
+        <div class="word-ref">John 19:26-27</div>
+        <div class="word-text">"Woman, here is your son... Here is your mother."</div>
+        <div class="word-note">In the middle of dying, he made sure his mother was cared for. Entrusting her to John.</div>
+      </div>
+      <div class="word-item" style="border-left-color: var(--gold);">
+        <div class="word-ref" style="color: var(--gold);">Matthew 27:46 — Psalm 22:1</div>
+        <div class="word-text">"My God, my God, why have you forsaken me?"</div>
+        <div class="word-note">The cry of dereliction. He was quoting Psalm 22 — but he was also living it. The separation that our sin deserved fell on him.</div>
+      </div>
+      <div class="word-item">
+        <div class="word-ref">John 19:28</div>
+        <div class="word-text">"I am thirsty."</div>
+        <div class="word-note">Two words. Just a man. Desperately thirsty after hours of blood loss and exposure. The Word of God made flesh, dying of thirst.</div>
+      </div>
+      <div class="word-item" style="border-left-color: var(--gold); background: rgba(201, 168, 76, 0.12);">
+        <div class="word-ref" style="color: var(--gold);">John 19:30</div>
+        <div class="word-text" style="font-size: 1.4rem; color: var(--gold-light);">"It is finished."</div>
+        <div class="word-note" style="color: rgba(250,246,237,0.75);">Tetelestai — one Greek word. Stamped on paid debt receipts in the ancient world. "PAID IN FULL." The debt of every sin ever committed, by everyone who would ever live. Done.</div>
+      </div>
+      <div class="word-item">
+        <div class="word-ref">Luke 23:46 — Psalm 31:5</div>
+        <div class="word-text">"Father, into your hands I commit my spirit."</div>
+        <div class="word-note">The last thing he said. He chose when to die. And he died the way he had lived — trusting his Father completely.</div>
+      </div>
+    </div>
+    <div class="word-study" style="background: rgba(201, 168, 76, 0.1); border-color: rgba(201, 168, 76, 0.25); margin-top: 2rem;">
+      <span class="greek" style="color: var(--gold-light);">Τετέλεσται</span>
+      <span class="transliteration" style="color: var(--gold);">Tetelestai — John 19:30</span>
+      <p style="color: rgba(250,246,237,0.75);">A commercial and legal term used in the ancient world. When a debt was paid in full, this word was written across the receipt. One exhaled word from the cross — and every debt ever owed to God by every person who would ever live was cancelled. Not reduced. Not deferred. Finished.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-tag">The Cosmic Response</p>
+  <h2>What Heaven Did When Jesus Died</h2>
+  <p>Three things happened at the moment of Jesus's death that the Gospel writers record without explanation or interpretation — simply as fact:</p>
+  <p><strong>Darkness from noon to 3pm.</strong> Luke records it. This was the middle of the day, the brightest part. And Passover is always at a full moon — making a solar eclipse physically impossible. This wasn't astronomical. Something else was happening.</p>
+  <p><strong>The Temple curtain tore from top to bottom.</strong> This curtain — sixty feet high, four inches thick according to Jewish historical sources — separated the Holy of Holies (the place of God's presence) from the rest of the Temple. No human being could have torn it from the top. The direction matters: it was torn from God's side, not ours. The barrier between humanity and God's presence was gone. Not ceremonially. Literally.</p>
+  <p><strong>The earth shook and tombs opened.</strong> Matthew records that many who had died were raised and appeared to people in Jerusalem after the resurrection. The death of Jesus sent shockwaves through death itself.</p>
+</section>
+
+<div class="reflection">
+  <div class="reflection-content">
+    <p class="section-tag">Reflection</p>
+    <h2>Don't Rush to Sunday</h2>
+    <p>Good Friday asks something of us that's genuinely hard: stay here. Don't jump to Easter. The people who loved Jesus didn't know Sunday was coming. They walked away from the cross devastated. And something important is lost when we skip past the grief.</p>
+    <p>Read Isaiah 53 together today — slowly, out loud. It was written seven hundred years before the crucifixion, and it reads like a news report. Then read Psalm 22 — Jesus quoted its opening words from the cross, and the rest of the psalm describes his experience with startling accuracy.</p>
+    <div class="scripture">
+      <p>"Surely he took up our pain and bore our suffering, yet we considered him punished by God, stricken by him, and afflicted. But he was pierced for our transgressions, he was crushed for our iniquities."</p>
+      <cite>Isaiah 53:4-5</cite>
+    </div>
+    <div class="reflection-question">
+      <p>Sit quietly with the cross today. Not the theology of it — just the fact of it. God, in the flesh, choosing to die for you. What do you want to say to him?</p>
+    </div>
+    <div class="deeper-reading">
+      <h4>For Deeper Reading</h4>
+      <div class="reading-tags">
+        <span class="reading-tag">Isaiah 53 (all of it)</span>
+        <span class="reading-tag">Psalm 22 (all of it)</span>
+        <span class="reading-tag">Hebrews 9:11-28</span>
+        <span class="reading-tag">Romans 5:6-11</span>
+        <span class="reading-tag">2 Corinthians 5:21</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     HOLY SATURDAY
+════════════════════════════════════════ -->
+<div id="saturday" class="day-sep"></div>
+
+<div class="day-header saturday">
+  <div class="day-num">VII</div>
+  <div class="day-header-content">
+    <p class="day-label">Day Seven — Holy Saturday</p>
+    <h2 class="day-title">The Day Without a Sunrise</h2>
+    <p class="day-subtitle">"Even though I walk through the darkest valley, I will fear no evil."</p>
+    <div class="day-refs">
+      <span class="ref-tag">John 20:19</span>
+      <span class="ref-tag">1 Peter 3:18-20</span>
+      <span class="ref-tag">Psalm 23</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <p class="section-tag">What Happened</p>
+  <h2>The Day the Disciples Didn't Know Would End</h2>
+  <p>Saturday is the most forgotten day of Holy Week. And it's probably the most important one to sit inside for a while.</p>
+  <p>The disciples had no idea Sunday was coming. This needs to be felt, not just understood. They weren't waiting in hopeful anticipation. They were shattered. John 20:19 tells us they were hiding behind locked doors "for fear of the Jewish leaders." Peter had denied knowing Jesus three times. Judas had taken his own life. The man they had left everything to follow — three years, their livelihoods, their families' expectations — had been publicly executed as a criminal.</p>
+  <p>Everything they believed had appeared to collapse. The one they thought was the Messiah died like a rebel slave.</p>
+  <p>Saturday was total darkness. No word from God. No sign. Just grief, and fear, and a sealed tomb with Roman soldiers posted outside.</p>
+</section>
+
+<section class="section section-alt">
+  <p class="section-tag">Historical Context &amp; Commentary</p>
+  <h2>What Was Happening Beyond What Anyone Could See</h2>
+  <p>Joseph of Arimathea — a wealthy member of the Sanhedrin who had followed Jesus secretly — went to Pilate and asked for the body. This took courage. He was publicly associating himself with a condemned criminal, which would have cost him significantly in the council. He wrapped Jesus's body in linen and laid it in his own newly cut tomb in a garden near Golgotha.</p>
+  <p>Nicodemus came too, bringing seventy-five pounds of myrrh and aloes. Another secret disciple, stepping into the open.</p>
+  <p>A large stone was rolled across the entrance. The chief priests went to Pilate and asked for a guard: they remembered Jesus saying he would rise after three days, and they wanted to make sure the tomb stayed sealed. Roman soldiers were posted.</p>
+  <div class="pull-quote">
+    <p>There are two things happening on Saturday. In one register: grief, locked doors, silence, a sealed tomb. In another register — referenced in 1 Peter 3:18-20 and Ephesians 4:8-10 — something is moving in the depths that no one above ground can see. Death does not have dominion. Not even today.</p>
+  </div>
+  <div class="commentary">
+    <div class="commentary-author">Fleming Rutledge — Theologian</div>
+    <p>"Holy Saturday is the day of God's absence. It is the day the disciples did not know how to live through. It corresponds to the experience of everyone who has ever prayed and heard nothing, everyone who has waited for God to act and watched the stone stay sealed. It is a real day. It is part of the story."</p>
+    <span class="book">The Crucifixion: Understanding the Death of Jesus Christ</span>
+  </div>
+</section>
+
+<div class="reflection">
+  <div class="reflection-content">
+    <p class="section-tag">Reflection</p>
+    <h2>The Holy Saturday of the Soul</h2>
+    <p>Most of us have lived through our own version of Saturday. The prayer that seemed to bounce off the ceiling. The situation that didn't resolve the way we believed it would. The period when God felt genuinely absent — not distant, absent. When you couldn't feel the faith you'd built your life on.</p>
+    <p>The disciples' Saturday was real. God didn't fast-forward through it for them. He let them sit in it. And he let them sit in it even though he knew exactly what Sunday held.</p>
+    <p>That matters. The darkness of Saturday is not a sign that Sunday isn't coming. It's just part of the story.</p>
+    <div class="reflection-question">
+      <p>Who do you know who is in their own Holy Saturday right now — in grief, in silence, in a season where God feels absent? Pray for them today by name. And if you're in that season yourself — you're allowed to say so.</p>
+    </div>
+    <div class="deeper-reading">
+      <h4>For Deeper Reading</h4>
+      <div class="reading-tags">
+        <span class="reading-tag">Psalm 23</span>
+        <span class="reading-tag">Psalm 88 (the darkest psalm)</span>
+        <span class="reading-tag">Lamentations 3:1-26</span>
+        <span class="reading-tag">1 Peter 3:18-22</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     EASTER SUNDAY
+════════════════════════════════════════ -->
+<div id="easter" class="day-sep"></div>
+
+<div class="day-header easter">
+  <div class="day-num">VIII</div>
+  <div class="day-header-content">
+    <p class="day-label">Day Eight — Easter Sunday</p>
+    <h2 class="day-title">He Is Risen</h2>
+    <p class="day-subtitle">"Why do you look for the living among the dead?"</p>
+    <div class="day-refs">
+      <span class="ref-tag">Matthew 28</span>
+      <span class="ref-tag">Mark 16</span>
+      <span class="ref-tag">Luke 24</span>
+      <span class="ref-tag">John 20–21</span>
+      <span class="ref-tag">1 Corinthians 15</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <p class="section-tag">What Happened</p>
+  <h2>Very Early in the Morning, While It Was Still Dark</h2>
+  <p>The women came first. Mary Magdalene and the others arrived at the tomb with burial spices — prepared to anoint a body. They were not expecting an empty tomb. They were not expecting anything except the quiet, terrible task of finishing what the men had been too afraid to do properly on Friday evening.</p>
+  <p>The stone was gone. The tomb was empty.</p>
+  <p>But not completely empty. John, in his account, gives us a detail that has the ring of someone who was actually there. The burial cloths were not scattered. Not thrown aside in a hurry. They were lying there — folded, arranged, as if a body had simply passed through them. The face cloth was folded separately, set to one side.</p>
+  <p>John records his own reaction: "He saw and believed" (John 20:8). He doesn't explain what he believed. He doesn't need to. The detail of the grave clothes said everything.</p>
+  <div class="commentary">
+    <div class="commentary-author">Richard Bauckham — New Testament Scholar</div>
+    <p>"The naming of specific women as the primary witnesses of the resurrection is exactly what we would expect from authentic testimony. In a culture where women's legal testimony was often dismissed, no one fabricating a resurrection story would have chosen women as the first witnesses. Their names were preserved because they were known — because they were there."</p>
+    <span class="book">Jesus and the Eyewitnesses</span>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <p class="section-tag">Historical Context</p>
+  <h2>The Appearances — What Changed Everything</h2>
+  <p>The risen Jesus appeared to people over the course of forty days before his ascension. Paul, writing to the Corinthians around 20 years after the resurrection, gives us what scholars recognise as one of the earliest creeds in the entire New Testament:</p>
+  <div class="scripture">
+    <p>"He appeared to Cephas, and then to the Twelve. After that, he appeared to more than five hundred of the brothers and sisters at the same time, most of whom are still living, though some have fallen asleep. Then he appeared to James, then to all the apostles, and last of all he appeared to me also."</p>
+    <cite>1 Corinthians 15:5-8</cite>
+  </div>
+  <p>Paul mentions five hundred witnesses and then adds — almost as a footnote — that most of them are still alive. This was a first-century equivalent of a footnote saying: go and ask them. This was verifiable when he wrote it.</p>
+  <p>Each of the specific appearances carries its own weight. Mary Magdalene, alone in the garden, too lost in grief to recognise him — until he said her name. The disciples on the road to Emmaus, walking with him for miles without knowing who he was, until the moment he broke bread with them and their eyes opened. Thomas, who refused to believe without evidence, and got evidence: "Put your finger here; see my hands. Reach out your hand and put it into my side." His response — "My Lord and my God!" — is the highest declaration of Jesus's identity in all of John's Gospel.</p>
+</section>
+
+<section class="section">
+  <p class="section-tag">Why the Resurrection Changes Everything</p>
+  <h2>This Is Not Symbolism. It Is History.</h2>
+  <p>Paul is relentlessly direct about what Christianity stands or falls on:</p>
+  <div class="scripture">
+    <p>"If Christ has not been raised, your faith is futile; you are still in your sins. Then those also who have fallen asleep in Christ are lost. If only for this life we have hope in Christ, we are of all people most to be pitied."</p>
+    <cite>1 Corinthians 15:17-19</cite>
+  </div>
+  <p>He is not offering a spiritual metaphor. He is making a historical claim and attaching everything to it. If the body of Jesus is still in a tomb somewhere, Christianity is false and Christians should be pitied. But if it happened — if Jesus actually, bodily, historically rose from the dead — then every claim he ever made about himself is true, and that changes the meaning of everything.</p>
+  <div class="commentary">
+    <div class="commentary-author">N.T. Wright — New Testament Scholar</div>
+    <p>"The disciples' transformation from frightened, hiding people to a movement that spread across the Roman Empire within decades, whose members were prepared to die for this claim, is simply inexplicable without a genuine encounter with a risen Jesus. No first-century Jewish or Greek worldview would have invented bodily resurrection as a theological category. They proclaimed something that surprised even them."</p>
+    <span class="book">The Resurrection of the Son of God</span>
+  </div>
+  <div class="prophecy-grid" style="margin-top: 2rem;">
+    <div class="prophecy-item">
+      <div class="ot"><strong>Psalm 16:10</strong>David's Psalm<br>"You will not abandon me to the realm of the dead, nor will you let your faithful one see decay"</div>
+      <div class="arrow">→</div>
+      <div class="fulfil"><strong>Acts 2:31-32</strong>Peter at Pentecost<br>"God raised him from the dead" — quoting this psalm directly</div>
+    </div>
+    <div class="prophecy-item">
+      <div class="ot"><strong>Jonah 1:17</strong>~760 BC<br>"Three days and three nights in the belly of the fish"</div>
+      <div class="arrow">→</div>
+      <div class="fulfil"><strong>Matthew 12:40</strong>Jesus names this directly<br>"So the Son of Man will be three days and nights in the heart of the earth"</div>
+    </div>
+  </div>
+</section>
+
+<div class="reflection" style="background: #1a2a10;">
+  <div class="reflection-content">
+    <p class="section-tag" style="color: var(--gold);">Reflection</p>
+    <h2 style="color: var(--cream);">Peace Be With You — Then He Showed Them His Wounds</h2>
+    <p>Read John 20:19-23. On Easter Sunday evening, the disciples are still hiding. Locked doors. And Jesus walks through the wall and stands among them.</p>
+    <p>The first thing he says is "Peace be with you." Then — and this matters — he showed them his hands and his side. The wounds were still there. The risen Jesus is not a resuscitated corpse and not a ghost. He is himself, transformed, glorified — but the wounds are real. The cross didn't disappear. It was taken up into the resurrection.</p>
+    <p>Then he said "Peace be with you" again. And: "As the Father has sent me, I am sending you."</p>
+    <p>The resurrection is not the end of the story. For the disciples, it was the beginning of one. And for you — it is the same. You are not a bystander to Holy Week. You are commissioned by the one who walked through it.</p>
+    <div class="reflection-question">
+      <p>What does it mean for you, today, that Jesus is alive? Not historically — personally. How does the resurrection change what you're walking into this week, this season, this year?</p>
+    </div>
+    <div class="deeper-reading">
+      <h4>For Deeper Reading</h4>
+      <div class="reading-tags">
+        <span class="reading-tag">John 20:19-23</span>
+        <span class="reading-tag">1 Corinthians 15:1-28</span>
+        <span class="reading-tag">Romans 8:11</span>
+        <span class="reading-tag">Revelation 1:17-18</span>
+        <span class="reading-tag">Psalm 16</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     SACRIFICE FRAMEWORK
+════════════════════════════════════════ -->
+<section class="section" style="background: var(--parchment-dark); max-width: 100%; padding: 5rem 4rem;">
+  <div style="max-width: 860px; margin: 0 auto;">
+  <p class="section-tag">Walking with Jesus</p>
+  <h2>Your Sacrifice Framework for the Week</h2>
+  <p>Drawn from ancient Holy Week practice, here is a practical framework for Dilshan and his wife to walk through together — a small act of solidarity with Jesus's journey for each day.</p>
+  <div class="sacrifice-grid">
+    <div class="sacrifice-row header">
+      <span style="letter-spacing: 0.15em; font-size: 0.65rem; text-transform: uppercase;">Day</span>
+      <span style="letter-spacing: 0.15em; font-size: 0.65rem; text-transform: uppercase;">Focus</span>
+      <span style="letter-spacing: 0.15em; font-size: 0.65rem; text-transform: uppercase;">Suggested Sacrifice</span>
+    </div>
+    <div class="sacrifice-row">
+      <span>Sunday</span>
+      <span>The cost of our expectations</span>
+      <span>Surrender one expectation of God you've been holding</span>
+    </div>
+    <div class="sacrifice-row">
+      <span>Monday</span>
+      <span>What clutters the inner temple</span>
+      <span>Fast from one specific distraction — social media, entertainment</span>
+    </div>
+    <div class="sacrifice-row">
+      <span>Tuesday</span>
+      <span>Authenticity before God</span>
+      <span>Only honest prayer this week — no performance, no formulas</span>
+    </div>
+    <div class="sacrifice-row">
+      <span>Wednesday</span>
+      <span>Silence and examination</span>
+      <span>A partial fast. Spend time in stillness — let God speak first</span>
+    </div>
+    <div class="sacrifice-row">
+      <span>Thursday</span>
+      <span>Communion and intimacy</span>
+      <span>Fast until evening. Share communion together. Read John 13-17</span>
+    </div>
+    <div class="sacrifice-row">
+      <span>Friday</span>
+      <span>Full solidarity with the cross</span>
+      <span>Full fast from food. Read Isaiah 53 and Psalm 22 together aloud</span>
+    </div>
+    <div class="sacrifice-row">
+      <span>Saturday</span>
+      <span>Holy waiting</span>
+      <span>No entertainment. Journal your Holy Week. Pray for those in darkness</span>
+    </div>
+    <div class="sacrifice-row">
+      <span>Sunday</span>
+      <span>Resurrection joy</span>
+      <span>Break the fast together — celebrate with a meal, with gratitude</span>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     RESOURCES
+════════════════════════════════════════ -->
+<section class="section">
+  <p class="section-tag">For Further Study</p>
+  <h2>Books Worth Having</h2>
+  <div class="resources-grid">
+    <div class="resource-card">
+      <div class="title">The Cross of Christ</div>
+      <div class="author">John Stott</div>
+      <p>The definitive pastoral-theological treatment of what the cross means and why it matters. Stott writes with clarity and emotional weight.</p>
+    </div>
+    <div class="resource-card">
+      <div class="title">Jesus and the Victory of God</div>
+      <div class="author">N.T. Wright</div>
+      <p>A thorough historical examination of Jesus's ministry — including the triumphal entry, temple cleansing, and the Olivet Discourse.</p>
+    </div>
+    <div class="resource-card">
+      <div class="title">The Resurrection of the Son of God</div>
+      <div class="author">N.T. Wright</div>
+      <p>The most comprehensive scholarly defence of the historicity of the resurrection in print. Detailed, but rewarding.</p>
+    </div>
+    <div class="resource-card">
+      <div class="title">Jesus and the Eyewitnesses</div>
+      <div class="author">Richard Bauckham</div>
+      <p>A meticulous argument for why the Gospel accounts reflect genuine eyewitness testimony. Changes how you read the Gospels.</p>
+    </div>
+    <div class="resource-card">
+      <div class="title">The Crucifixion</div>
+      <div class="author">Fleming Rutledge</div>
+      <p>The most thorough contemporary theology of the cross available. Rutledge writes like a pastor and thinks like a scholar.</p>
+    </div>
+    <div class="resource-card">
+      <div class="title">Scripture to Read This Week</div>
+      <div class="author">Old Testament Prophecy</div>
+      <p>Psalm 22, Psalm 118, Isaiah 53, Zechariah 9 and 11 — read as Holy Week prophecy, seeing what God placed in those texts centuries before it happened.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="closing-content">
+    <div class="cover-divider"></div>
+    <h2>He Is Not Here.<br>He Has Risen.</h2>
+    <p style="margin-top: 1.5rem;">You've walked through the longest week in human history.</p>
+    <p>The cheering crowds. The overturned tables. The impossible debates. The thirty pieces of silver. The broken bread and the cup. The garden of crushed olives. The six illegal trials. The nails. The darkness at noon. The torn curtain. The sealed tomb.</p>
+    <p>And the folded grave clothes.</p>
+    <p class="gold-line" style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; margin-top: 2rem; color: var(--gold-light);">"As the Father has sent me, I am sending you."</p>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,246,237,0.3);">John 20:21</p>
+    <div class="cover-divider" style="margin-top: 2.5rem;"></div>
+    <p style="font-size: 0.85rem; color: rgba(250,246,237,0.25); margin-top: 1.5rem;">Prepared for Dilshan &amp; his wife · Holy Week · April 2026</p>
+  </div>
+</div>
+
+</body>
+</html>
